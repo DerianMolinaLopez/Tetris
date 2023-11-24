@@ -1,0 +1,34 @@
+Tetris 1.@ (1999-09-09)
+
+The one puzzle game.
+
+Executables:
+   tetris.com    system clock version (18.2fps)
+                 recommended for windowed mode.
+   tetrisv.com   vsync version (60/70fps)
+                 recommended for fullscreen mode.
+
+Keys:
+   Left             move block left.
+   Right            move block right.
+   Down             drop block to floor if not already there, or
+                    stop block from moving if it's already at the floor.
+   Pause            pause program.
+   Esc              Stop program (press keys again to exit).
+   Most other keys  Rotate block.
+
+Sources for both nasm 0.98 and tasm 4.0 are included.
+Program is assembled with nasm 0.98.
+
+On July 12, 2001, some 3am in the morning, I decided to port this
+thing to nasm, since I don't have tasm anymore and nasm is every way
+superior anyway.  So I did, and I disassembled the whole thing with
+debug, examined it byte by byte, manually added all the prefix and
+stuff until the nasm binary is of exact same sizes as the tasm binary.
+That's one hell of a way to spend my day off ^_^;;
+
+Bystander: Why did you create such monster?
+Mad scientist: Because I can!
+
+--
+omoikane@uguu.org - http://uguu.org/

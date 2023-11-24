@@ -1,5 +1,61 @@
 .model small
 .stack 100h
+PINTAR MACRO COLOR
+   push AX
+   push BX
+   push CX
+   push DX
+   MOV AL,COLOR
+   MOV AH,0CH
+   INT 10H
+   POP DX
+   POP CS
+   POP BX
+   POP DX
+   endm
+   
+CUADRADO MACRO L,X,Y,COLOR
+    PUSH AX
+    PUSH BX
+    PUSH CX
+    PUSH DX
+    
+    MOV AX,X
+    MOV BX,Y
+    
+    ADD AX,L;LIMITE HORIZONTAL
+    ADD BX,L;LIMITE VERTICAL
+    
+    MOV CX,X
+    MOV DX Y
+    
+S1:    PINTAR COLOR
+    INC DX
+    CMP DX,BX
+    JE S
+    JMP S1
+S: MOV DX,Y 
+   INC CX
+   PINTAR COLOR
+   CMP CX,AX
+   JE FIN
+   JMP S1
+FIN:
+   POP DX
+   POP CX
+   POP
+   BX
+   POz
+
+ 
+    
+    POP DX
+    POP CX
+    POP BX
+    POP AX
+ENDM
+    
+    
 .data
     ; Constantes para el modo gr?fico VGA
     SCREEN_WIDTH equ 320
@@ -15,9 +71,9 @@ main proc
     mov ax, 13h
     int 10h
 
-    ; Calcular las coordenadas del cuadrado en el centro
-    mov cx, SCREEN_WIDTH / 2 - 20 ; 20 es la mitad del ancho del cuadrado
-    mov dx, SCREEN_HEIGHT / 2 - 20 ; 20 es la mitad de la altura del cuadrado
+    ; Calcular las coordenadas del cuadrado
+    mov cx, SCREEN_WIDTH / 2 - 500 ; 200 es la mitad del ancho del cuadrado
+    mov dx, SCREEN_HEIGHT - 1000 ; 400 es la altura del cuadrado
 
     ; Dibujar el cuadrado rojo
     mov ax, SCREEN_SEGMENT
@@ -26,8 +82,8 @@ main proc
     shl di, 1 ; Multiplicar por 2 para obtener el desplazamiento en bytes
     add di, dx ; Sumar la coordenada y
     shl di, 8 ; Desplazar 8 bits para obtener el desplazamiento final
-    mov cx, 40 ; Ancho del cuadrado
-    mov dx, 40 ; Altura del cuadrado
+    mov cx, 400 ; Ancho del cuadrado
+    mov dx, 400 ; Altura del cuadrado
     mov bh, 0 ; P?gina de la pantalla
     mov ah, 0Ch ; Funci?n para dibujar p?xeles
     mov al, 4 ; Color rojo
