@@ -60,6 +60,9 @@ MAIN PROC
     INT 21H
 
 MAIN ENDP
+
+;generacion de la figura
+
 DIBUJA_CUADRO PROC
     ; Mover el cursor a la posici?n REN y COL
     MOV AH, 2
