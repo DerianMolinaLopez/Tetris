@@ -8,8 +8,7 @@ TITLE TETRIS; DIBUJAR EL MARCO
     MORADO          DB 00001101B ; Atributos para el bloque (morado)
     REN             DB 1          ; Posici?n vertical del bloque
     COL             DB 39         ; Posici?n horizontal del bloque (l?mite izq=20, l?mite der=57)
-    GAME_OVER       DB 0          ; Variable para indicar si el juego ha terminado
-    LETRERO_OVER    DB '     G A M E    O V E R$'
+
 
 .CODE
 MAIN PROC
@@ -44,7 +43,7 @@ MAIN PROC
 
     ; Bucle principal del juego
     CICLO:
-    CALL DIBUJA_CUADRO
+    CALL DIBUJA_BARRA_HORIZONTAL
     CALL ESPERA
 
     CMP REN, 22
